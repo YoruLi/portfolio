@@ -1,0 +1,26 @@
+{
+  "es": {
+    "intro": {
+      "title": "Disfrutando el proceso",
+      "subTitle": "Desarrollador web y de software. De Argentina, Buenos Aires."
+    },
+    "nav": {
+      "proyectos": "Proyectos",
+      "sobre-mi": "Sobre mí",
+      "contacto": "Contacto"
+    },
+    "projects": {}
+  },
+
+  "en": {
+    "intro": {
+      "title": "Enjoying the process",
+      "subTitle": "Web and software developer. From Argentina, Buenos Aires."
+    },
+    "nav": {
+      "proyectos": "Projects",
+      "sobre-mi": "About me",
+      "contacto": "Contact"
+    }
+  }
+}

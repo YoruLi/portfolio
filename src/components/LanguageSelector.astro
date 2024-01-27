@@ -1,0 +1,40 @@
+---
+import { LANGUAGES } from "@/i18n";
+import { translatePath } from "@/i18n/utils";
+
+const lang = Astro.currentLocale || "es";
+
+const currentLocaleData = LANGUAGES[lang];
+const otherLocales = Object.values(LANGUAGES).filter((locale) => locale.code !== lang);
+---
+
+<div class="fixed top-2 right-2 inline-block text-left mx-4">
+  <div
+    class="group text-white rounded-md text-xs font-semibold bg-black/30 hover:bg-black/70 transition-all"
+  >
+    <button
+      type="button"
+      class="inline-flex justify-start items-center w-full gap-x-2 px-3 h-[33.6px]"
+      aria-expanded="true"
+      aria-haspopup="true"
+    >
+      {currentLocaleData.code}
+    </button>
+    <ul
+      class="group-hover:block group-hover:animate-fade-down group-hover:animate-duration-200 hidden absolute w-full"
+    >
+      {
+        otherLocales.map((locale) => (
+          <li class="py-[2px]">
+            <a
+              class="rounded-md bg-black/30 hover:bg-black/70 whitespace-no-wrap inline-flex justify-start items-center w-full gap-x-2 px-3 h-[33.6px]"
+              href={`${translatePath(`/`, locale.code)}`}
+            >
+              {locale.code}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+---
+import { getKeyByValue } from "@/i18n/utils";
+import Section from "../Section.astro";
+import { routes } from "@/i18n";
+
+const lang = (Astro.currentLocale || "es") as Languages;
+
+const section = getKeyByValue(routes[lang], "sobre-mi");
+---
+
+<Section id={section} class="py-20">About me</Section>
