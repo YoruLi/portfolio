@@ -1,0 +1,55 @@
+---
+import { routes } from "@/i18n";
+import Section from "../Section.astro";
+import { getKeyByValue } from "@/i18n/utils";
+
+import { TECNOLOGIES } from "@/utils/index";
+import Card from "../Card.astro";
+
+const lang = (Astro.currentLocale || "es") as Languages;
+
+const section = getKeyByValue(routes[lang], "tecnologias");
+---
+
+<Section id={section} class="py-20 h-full w-screen">
+  <div id="container" class="w-full">
+    <h3 class="text-center mb-4 text-2xl">Tecnologias</h3>
+    <ul
+      role="list"
+      class="list-container mx-auto grid h-[300px] w-[300px] grid-cols-1 gap-5 sm:w-[600px] sm:grid-cols-2"
+    >
+      {
+        TECNOLOGIES.map((data) => (
+          <Card href={data.href} title={data.label}>
+            <data.icon />
+          </Card>
+        ))
+      }
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  #container {
+    animation: showCardContainer 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 10%;
+  }
+
+  @keyframes showCardContainer {
+    from {
+      opacity: 0;
+      transform: translateX(100%) rotateZ(-20deg) skewX(20deg) translateZ(0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0%) rotateZ(-20deg) skewX(20deg) translateZ(0);
+    }
+  }
+</style>
