@@ -8,29 +8,30 @@ const currentLocaleData = LANGUAGES[lang];
 const otherLocales = Object.values(LANGUAGES).filter((locale) => locale.code !== lang);
 ---
 
-<div class="fixed top-2 right-2 inline-block text-left mx-4">
+<div class="fixed bottom-0 right-0 py-2 inline-block backdrop-blur-md text-center mx-4 z-20">
   <div
-    class="group text-white rounded-md text-xs font-semibold bg-black/30 hover:bg-black/70 transition-all"
+    id="language-selector"
+    class="relative group text-white rounded-md text-xs font-semibold bg-white/10 hover:bg-white/20 transition-all"
   >
     <button
       type="button"
-      class="inline-flex justify-start items-center w-full gap-x-2 px-3 h-[33.6px]"
+      class="relative inline-flex justify-start items-center w-full px-3 h-[33.6px]"
       aria-expanded="true"
       aria-haspopup="true"
     >
-      {currentLocaleData.code}
+      {currentLocaleData.name}
     </button>
-    <ul
-      class="group-hover:block group-hover:animate-fade-down group-hover:animate-duration-200 hidden absolute w-full"
-    >
+
+    <ul class="group-hover:block isolate z-10 hidden absolute -top-[40px]">
       {
         otherLocales.map((locale) => (
-          <li class="py-[2px]">
+          <li class="py-1 z-0">
             <a
-              class="rounded-md bg-black/30 hover:bg-black/70 whitespace-no-wrap inline-flex justify-start items-center w-full gap-x-2 px-3 h-[33.6px]"
+              id="language-selector"
+              class="rounded-md   hover:bg-white/20 bg-white/10 whitespace-no-wrap inline-flex justify-start items-center w-full px-3 h-[33.6px]"
               href={`${translatePath(`/`, locale.code)}`}
             >
-              {locale.code}
+              {locale.name}
             </a>
           </li>
         ))
@@ -38,3 +39,20 @@ const otherLocales = Object.values(LANGUAGES).filter((locale) => locale.code !==
     </ul>
   </div>
 </div>
+<style>
+  ul {
+    animation: fade-out 0.5s ease;
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+</style>
