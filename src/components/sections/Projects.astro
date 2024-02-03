@@ -1,13 +1,130 @@
 ---
-import { routes } from "@/i18n";
+import { routes, getI18n } from "@/i18n";
 import Section from "../Section.astro";
 import { getKeyByValue } from "@/i18n/utils";
+import BentoItem from "../BentoItem.astro";
 
 const lang = (Astro.currentLocale || "es") as Languages;
-
+const i18n = getI18n({ currentLocale: lang });
 const section = getKeyByValue(routes[lang], "proyectos");
 ---
 
-<Section id={section} class="py-20 h-full w-screen">Proyectos</Section>
+<h2 class="text-center py-10 text-4xl font-bold">{i18n.projects.title}</h2>
+<Section id={section} class="w-full grid lg:grid-cols-10 auto-rows-[18rem] h-full gap-4 mx-auto">
+  <BentoItem id="first" class="lg:col-span-7 col-span-10 flex">
+    <div
+      slot="image"
+      class="backgroundImg transition-scale absolute right-0
+        -z-10 h-full lg:w-[60%] w-[100%] bg-transparent
+        bg-cover bg-center bg-no-repeat opacity-50 duration-1000 ease-in-out"
+      data-src="/scratch.png"
+    >
+    </div>
+    <div slot="info" class="self-end">
+      <div class="p-4">
+        <h3 class="font-bold text-xl text-pretty">Scratch.io</h3>
+        <p class="text-sm">{i18n.projects.scratch_io_description}</p>
+      </div>
+    </div>
+  </BentoItem>
 
-<style></style>
+  <BentoItem id="second" class="lg:col-span-3 col-span-10 flex">
+    <div
+      slot="image"
+      class="backgroundImg transition-scale absolute right-0
+        -z-10 h-full w-[100%] bg-transparent
+        bg-cover bg-center bg-no-repeat opacity-50 duration-1000 ease-in-out"
+      data-src="/lym.png"
+    >
+    </div>
+    <div slot="info" class="place-self-end ml-auto">
+      <div class="p-4">
+        <h3 class="font-bold text-xl">Url shortener</h3>
+        <p class="text-xs text-pretty">{i18n.projects.url_shortener_description}</p>
+      </div>
+    </div>
+  </BentoItem>
+  <BentoItem id="third" class="lg:col-span-3 col-span-10 flex">
+    <div
+      slot="image"
+      class="backgroundImg transition-scale absolute right-0
+        -z-10 h-full w-[100%] bg-transparent
+        bg-cover bg-center bg-no-repeat opacity-50 duration-1000 ease-in-out"
+      data-src="/ssdsp.png"
+    >
+    </div>
+    <div slot="info" class="self-end">
+      <div class="p-4">
+        <h3 class="font-bold text-lg">Notes app</h3>
+        <p class="text-xs text-pretty">{i18n.projects.notes_description}</p>
+      </div>
+    </div>
+  </BentoItem>
+  <BentoItem id="fourth" class="lg:col-span-7 col-span-10 flex">
+    <div
+      slot="image"
+      class="backgroundImg transition-scale absolute left-0
+     -z-10 h-full lg:w-[60%] w-[100%] bg-transparent
+        bg-cover bg-center bg-no-repeat opacity-50 duration-1000 ease-in-out"
+      data-src="/event-app.png"
+    >
+    </div>
+    <div slot="info" class="place-self-end ml-auto">
+      <div class="p-4">
+        <h3 class="font-bold text-xl text-end">Event app</h3>
+        <p class="text-sm text-balance">{i18n.projects.event_description}</p>
+      </div>
+    </div>
+  </BentoItem>
+</Section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const backgrounds = document.querySelectorAll(".backgroundImg") as NodeListOf<HTMLElement>;
+
+    if (window.IntersectionObserver == null) {
+      backgrounds.forEach((bg) => {
+        console.log(bg.dataset.src);
+        bg.style.backgroundImage = "url('" + bg.dataset.src + "')";
+      });
+      return;
+    }
+
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.map((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+
+          target.style.backgroundImage = "url('" + target.dataset.src + "')";
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      rootMargin: "100px",
+    });
+
+    backgrounds.forEach((bg) => observer.observe(bg));
+  });
+</script>
+
+<style>
+  h2 {
+    animation: slide-fade 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 1% cover 20%;
+  }
+
+  @keyframes slide-fade {
+    from {
+      opacity: 0;
+      transform: translateY(-20vh);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+</style>

@@ -2,10 +2,48 @@
 import { getKeyByValue } from "@/i18n/utils";
 import Section from "../Section.astro";
 import { routes } from "@/i18n";
+import i18n from "@/i18n/translate.json";
+import { CloudComponent } from "@/components/Cloud";
 
 const lang = (Astro.currentLocale || "es") as Languages;
 
 const section = getKeyByValue(routes[lang], "sobre-mi");
 ---
 
-<Section id={section} class="py-20">About me</Section>
+<Section id={section} class="my-32 mx-auto w-full h-screen">
+  <div class="flex text-pretty items-center justify-center p-4 bg-main-bg h-full z-20">
+    <div class="flex flex-col gap-4 text-pretty items-center justify-center p-4 bg-main-bg h-full z-20 pl-4">
+      <div
+        class="content border py-1 px-8 rounded-2xl backdrop-blur-[4px] border-white/5 bg-white/80 leading-relaxed text-start z-20"
+      >
+        {i18n[lang].about.title}
+      </div>
+      <div class="content flex flex-col gap-2 border border-white/5 bg-white/80 p-2 rounded-3xl backdrop-blur-[4px] z-40">
+        <div class="border py-6 px-8 rounded-2xl border-white/5 leading-relaxed text-center">
+          <div class="py-4 *:text-base w-[70ch] text-balance">
+            <p>{i18n[lang].about.p1}</p>
+
+            <p>{i18n[lang].about.p1_2}</p>
+          </div>
+
+          <div class="py-4 *:text-base w-[70ch] text-balance">
+            <p>{i18n[lang].about.p2}</p>
+            <p>{i18n[lang].about.p2_2}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute top-0 left-0 right-0 w-full h-full">
+        <CloudComponent client:load />
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .content {
+    animation: left 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 20%;
+  }
+</style>

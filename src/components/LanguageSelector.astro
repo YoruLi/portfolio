@@ -2,8 +2,8 @@
 import { LANGUAGES } from "@/i18n";
 import { translatePath } from "@/i18n/utils";
 
-const lang = Astro.currentLocale || "es";
-
+const { currentLocale } = Astro;
+const lang = currentLocale ?? "es";
 const currentLocaleData = LANGUAGES[lang];
 const otherLocales = Object.values(LANGUAGES).filter((locale) => locale.code !== lang);
 ---
@@ -11,7 +11,7 @@ const otherLocales = Object.values(LANGUAGES).filter((locale) => locale.code !==
 <div class="fixed bottom-0 right-0 py-2 inline-block backdrop-blur-md text-center mx-4 z-20">
   <div
     id="language-selector"
-    class="relative group text-white rounded-md text-xs font-semibold bg-white/10 hover:bg-white/20 transition-all"
+    class="relative group text-white rounded-md text-xs font-semibold border-[rgba(255,255,255,.08)] hover:bg-white/20 transition-all"
   >
     <button
       type="button"
@@ -43,7 +43,6 @@ const otherLocales = Object.values(LANGUAGES).filter((locale) => locale.code !==
   ul {
     animation: fade-out 0.5s ease;
   }
-
   @keyframes fade-out {
     from {
       opacity: 0;

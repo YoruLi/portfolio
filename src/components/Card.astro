@@ -8,8 +8,8 @@ interface Props {
 const { href, title } = Astro.props;
 ---
 
-<li class="link-card hover:scale-[1.025] transition-all will-change-transform">
-  <a href={href} target="_blank" class="*:size-7 grid place-content-center">
+<li class="link-card transition border-[1px] border-white/5 rounded-lg">
+  <a href={href} target="_blank" class="*:size-8 grid place-content-center">
     <slot />
   </a>
 </li>
@@ -21,8 +21,9 @@ const { href, title } = Astro.props;
     padding: 1px;
     background-image: none;
     background-size: 400%;
-    border-radius: 7px;
     background-position: 100%;
+    background: radial-gradient(57.89% 132% at 65.79% -35%, rgba(120, 123, 255, 0.06) 0%, rgba(120, 123, 255, 0) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0) 54.17%, rgba(255, 255, 255, 0.04) 100%), rgba(255, 255, 255, 0.01);
     transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   }
@@ -31,23 +32,35 @@ const { href, title } = Astro.props;
     width: 100%;
     text-decoration: none;
     padding: calc(1.5rem - 1px);
-    border-radius: 8px;
     color: white;
     background-color: transparent;
-    opacity: 0.8;
   }
 
   li {
-    animation: reveal linear both;
+    animation: card-reveal 1s linear both;
     animation-timeline: view();
-    animation-range: entry 10% cover 20%;
+    animation-range: entry;
+  }
+  .link-card:hover {
+    background: radial-gradient(57.89% 132% at 65.79% -35%, rgba(120, 123, 255, 0.06) 0%, rgba(120, 123, 255, 0) 100%),
+      linear-gradient(180deg, rgba(100, 89, 89, 0.132) 54.17%, rgba(255, 255, 255, 0.04) 100%), rgba(113, 99, 99, 0.01);
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  @keyframes skew-scroll {
+    from {
+      transform: translateY(10%);
+    }
+
+    to {
+      transform: translateY(-135px);
+    }
   }
 
-  @keyframes reveal {
+  @keyframes card-reveal {
     from {
       opacity: 0;
-
-      scale: 0.9;
+      scale: 0.5;
     }
     to {
       opacity: 1;

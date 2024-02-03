@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: "var(--accent-gradient)",
       colors: {
+        "main-bg": "var(--app-bg)",
         background: "hsl(var(--background))",
       },
     },

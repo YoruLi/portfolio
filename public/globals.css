@@ -5,7 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background: 0, 0%, 8.5%;
-  --app-bg: 0, 0%, 7.5%;
+  --app-bg: rgb(24, 24, 27);
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --primary: 208, 100%, 97%;
@@ -13,12 +13,7 @@
   --accent: 136, 58, 234;
   --accent-light: 224, 204, 250;
   --accent-dark: 49, 10, 101;
-  --accent-gradient: linear-gradient(
-    45deg,
-    rgb(var(--accent)),
-    rgb(var(--accent-light)) 30%,
-    white 60%
-  );
+  --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, rgba(255, 255, 255, 0.122) 60%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,7 +30,6 @@
     --app-bg: rgb(24 24 27);
     color: hsl(var(--primary));
     background-color: var(--app-bg);
-    opacity: 1;
   }
 
   /* body::before {
@@ -51,14 +45,9 @@
   } */
 }
 
-.text-gradient {
-  background-image: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 400%;
-  background-position: 0%;
+.link-active {
+  @apply bg-black/30;
 }
-
 .scrollbar-hidden {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

@@ -5,42 +5,49 @@ import Projects from "./sections/Projects.astro";
 import About from "./sections/About.astro";
 import Contact from "./sections/Contact.astro";
 import { getI18n } from "@/i18n/index";
+import { getLangFromUrl } from "@/i18n/utils";
+
 import Tecnologies from "./sections/Tecnologies.astro";
+import LanguageSelector from "./LanguageSelector.astro";
+import ChatBot from "./ChatBot";
 
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="h-full w-full">
-    <Section class="flex flex-col items-center justify-center w-full h-full pb-[280vh]">
+  <LanguageSelector />
+  <main class="h-full w-full mx-auto pb-20">
+    <Section class="flex flex-col items-center justify-center w-full h-screen">
       <div
         id="container"
-        class="fixed text-center text-pretty flex-col justify-between content-between items-center top-40 w-full h-[calc(200vh)] bg-transparent inset-0 mix-blend-lighten"
+        class="text-center fixed top-0 py-40 h-[100vh] text-pretty w-full bg-transparent inset-0 mix-blend-lighten"
       >
         <h1>{i18n.intro.title}</h1>
         <h2>{i18n.intro.subTitle}</h2>
 
-        <div
-          id="videoContainer"
-          class="w-screen h-screen z-[-20] opacity-30 absolute bg-transparent"
-        >
+        <div id="videoContainer" class="w-full h-full z-[-20] opacity-30 absolute bg-transparent">
           <video class="w-full h-full object-cover" preload="false" playsinline loop muted autoplay>
             <source src="/videos/hero.webm" type="video/webm" />
           </video>
         </div>
       </div>
     </Section>
+
     <Tecnologies />
     <Projects />
     <About />
     <Contact />
   </main>
+
+  <ChatBot client:only lang={lang} />
 </Layout>
 
 <style>
   h1 {
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2rem, 8vw, 4rem);
     font-weight: 700;
     line-height: 1;
     text-align: center;
@@ -49,29 +56,29 @@ const i18n = getI18n({ currentLocale });
 
   h1,
   h2 {
-    --speed: 2;
     animation: reduce 1s linear both;
     animation-timeline: scroll();
-    animation-range-start: 0 5vh;
-    animation-range-end: 0 100vh;
+    animation-range-start: entry 10px;
+    animation-range-end: exit 50%;
   }
 
   #videoContainer {
     --speed: 1;
     animation: translate 1s linear both;
     animation-timeline: scroll();
-    animation-range-start: 0 200px;
+    animation-range: entry 10% cover 100%;
   }
   #container {
     --speed: 1;
     animation: translate 1s linear both;
     animation-timeline: scroll();
-    animation-range: exit 200vh;
+    animation-range: entry 30% cover 50%;
   }
 
   @keyframes reduce {
     to {
-      scale: 0.7;
+      scale: 0.5;
+      opacity: 0;
     }
   }
 
@@ -81,5 +88,3 @@ const i18n = getI18n({ currentLocale });
     }
   }
 </style>
-
-<script></script>

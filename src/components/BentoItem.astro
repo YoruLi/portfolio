@@ -1,0 +1,77 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+}
+
+const { id } = Astro.props;
+---
+
+<article
+  id={id}
+  class={` w-full border border-white/5 relative rounded-lg backdrop-blur-md overflow-hidden group group-hover:scale-110 ${Astro.props.class}`}
+>
+  <slot name="info" />
+  <slot name="image" />
+</article>
+
+<style>
+  article {
+    background: radial-gradient(57.89% 132% at 65.79% -35%, rgba(120, 123, 255, 0.06) 0%, rgba(120, 123, 255, 0) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0) 54.17%, rgba(255, 255, 255, 0.04) 100%), rgba(255, 255, 255, 0.01);
+  }
+
+  article {
+    animation: showSection 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 10%;
+  }
+
+  @keyframes showSection {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  #first,
+  #third {
+    animation: left 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+
+  #second,
+  #fourth {
+    animation: right 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+
+  @keyframes left {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes right {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>

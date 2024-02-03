@@ -40,21 +40,18 @@ export default function Globe() {
         })
       }
       hexPolygonColor={() => "rgba(255,255,255, 1)"}
+      customThreeObject={(sliceData: any) => {
+        const { size, color } = sliceData;
+        return new Three.Mesh(new Three.SphereGeometry(size), new Three.MeshBasicMaterial({ color }));
+      }}
       customLayerData={[...Array(500).keys()].map(() => ({
         lat: (Math.random() - 1) * 360,
         lng: (Math.random() - 1) * 360,
         altitude: Math.random() * 2,
         size: Math.random() * 1,
-        color: "#9999cc",
+        color: "#3e4040",
       }))}
-      customThreeObject={(sliceData) => {
-        const { size, color } = sliceData;
-        return new Three.Mesh(
-          new Three.SphereGeometry(size),
-          new Three.MeshBasicMaterial({ color })
-        );
-      }}
-      customThreeObjectUpdate={(obj, sliceData) => {
+      customThreeObjectUpdate={(obj, sliceData: any) => {
         const { lat, lng, altitude } = sliceData;
         return Object.assign(obj.position, globeRef.current?.getCoords(lat, lng, altitude));
       }}

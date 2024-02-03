@@ -1,6 +1,6 @@
 import English from "@/components/icons/English.astro";
 import Spanish from "@/components/icons/Spanish.astro";
-import { LANG } from "@/contants";
+import { LANG } from "@/constants";
 import i18n from "@/i18n/translate.json";
 
 export const LANGUAGES: Record<string, { code: Languages; name: string; flag: typeof Spanish }> = {
@@ -24,11 +24,13 @@ export const getI18n = ({ currentLocale = "es" }: { currentLocale: string | unde
 
 export const routes = {
   es: {
+    tecnologias: "tecnologias",
     proyectos: "proyectos",
     "sobre-mi": "sobre-mi",
     contacto: "contacto",
   },
   en: {
+    tecnologias: "tecnologies",
     proyectos: "projects",
     "sobre-mi": "about",
     contacto: "contact",

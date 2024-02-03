@@ -1,12 +1,19 @@
 ---
-import { getLangFromUrl, useTranslation, translatePath } from "@/i18n/utils";
-import LanguageSelector from "./LanguageSelector.astro";
+import { getLangFromUrl, useTranslation, translatePath, getKeyByValue } from "@/i18n/utils";
+
+import { routes } from "@/i18n";
 
 const t = useTranslation(getLangFromUrl(Astro.url));
 
 const lang = getLangFromUrl(Astro.url);
+type NavTranslation = (typeof routes)[typeof lang];
 
 const navItems = [
+  {
+    title: "Tecnologías",
+    label: "tecnologias",
+    href: "/#tecnologias",
+  },
   {
     title: "Proyectos",
     label: "proyectos",
@@ -26,45 +33,72 @@ const navItems = [
 ];
 ---
 
-<header class="flex mx-auto justify-center items-center sticky top-0 w-full z-10 pt-2">
-  <nav
-    class="border border-[rgba(255,255,255,.08)] bg-black/30 rounded-md px-3 py-1 md:px-6 backdrop-blur-lg"
-  >
+<header class="flex sticky top-0 w-full z-50 pt-2">
+  <nav class="border m-auto border-[rgba(255,255,255,.08)] bg-black/30 rounded-md px-3 py-1 md:px-6 backdrop-blur-lg">
     <ul class="space-x-2">
       {
         navItems.map(({ href, label }) => {
           const navTranslation = t("nav");
-          const translatedLabel = navTranslation[label];
+          const title = navTranslation[label as keyof NavTranslation];
           return (
             <a
               href={translatePath(href, lang)}
-              aria-label={translatedLabel}
-              class={`rounded-lg px-2 opacity-80 hover:opacity-100 transition`}
+              aria-label={getKeyByValue(routes[lang], label)}
+              class={`link-active rounded-md px-2 opacity-80 hover:opacity-100 transition`}
             >
-              {translatedLabel}
+              {title}
             </a>
           );
         })
       }
     </ul>
   </nav>
-
-  <LanguageSelector />
 </header>
 
 <script>
-  window.addEventListener("astro:page-load", () => {
+  document.addEventListener("astro:page-load", () => {
     const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("nav ul a");
+    const navItems = document.querySelectorAll("header ul a");
 
-    const callback = (entries: any[]) => {
+    const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log(entry);
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") === entry.target.id) {
+              item.classList.add("link-active");
+            } else {
+              item.classList.remove("link-active");
+            }
+          });
         }
       });
     };
-    const options = {};
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    };
     const observer = new IntersectionObserver(callback, options);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+    window.onunload = () => {
+      observer.disconnect();
+    };
   });
 </script>
+
+<style>
+  nav {
+    animation: nav-shadow 1s linear both;
+    animation-timeline: scroll();
+    animation-range: cover 10%;
+  }
+
+  @keyframes nav-shadow {
+    to {
+      @apply bg-white/30;
+    }
+  }
+</style>
