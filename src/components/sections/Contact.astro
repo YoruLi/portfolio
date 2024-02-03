@@ -25,12 +25,18 @@ const section = getKeyByValue(routes[lang], "contacto");
       <p>{i18n[lang].contact.subtitle}</p>
 
       <div class="flex justify-center w-full gap-3 *:size-7 [&>svg]:fill-[#545454]">
-        <GitHub />
-        <Instagram />
-        <Linkedin />
+        <a href="https://github.com/YoruLi" target="_blank">
+          <GitHub />
+        </a>
+        <a href="https://www.instagram.com/liofarias22/" target="_blank">
+          <Instagram />
+        </a>
+        <a href="https://www.linkedin.com/in/lionel-farias-903711281/" target="_blank">
+          <Linkedin />
+        </a>
       </div>
       <button
-        class="text-center w-auto mt-3 backdrop-blur-md hover:bg-main-bg transition-colors border-white/10 bg-gradient-to-b from-40% from-black/10 to-white/20 hover:opacity-80 border rounded-md px-2 py-1"
+        class="text-center w-auto mt-3 backdrop-blur-md transition-colors border rounded-md px-3 py-1 bg-gradient-to-b from-slate-700/50 to-black/50 hover:opacity-75"
         >{i18n[lang].contact.title}</button
       >
     </div>
