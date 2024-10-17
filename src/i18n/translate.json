@@ -1,79 +1,82 @@
 {
-  "es": {
-    "intro": {
-      "title": "Hola, soy Lionel Farias",
-      "subTitle": "Desarrollador de software y web. De Argentina, Buenos Aires."
+    "es": {
+        "errors": {
+            "400": "Lo sentimos, algo ha salido mal...",
+            "404": "Lo sentimos, no pudimos encontrar la página que buscas..."
+        },
+        "intro": {
+            "title": "Hola, soy Lionel Farias",
+            "subTitle": "Desarrollador de software y web. De Argentina, Buenos Aires."
+        },
+        "nav": {
+            "tecnologias": "Tecnologías",
+            "proyectos": "Proyectos",
+            "sobre-mi": "Sobre mí",
+            "contacto": "Contacto"
+        },
+        "projects": {
+            "title": "Mis Proyectos",
+            "scratch_io_description": "Dibuja en tiempo real con amigos.",
+            "url_shortener_description": "Lym, acortador de urls simple.",
+            "notes_description": "Crea y accede a tus notas de manera sencilla.",
+            "event_description": "Creación de eventos desde cualquier parte"
+        },
+        "about": {
+            "title": "Sobre mí",
+            "p1": "¡Hola, soy Lionel Farias👋!\nTengo 18 años y soy Técnico Informático.",
+            "p1_2": "Soy un programador apasionado por el desarrollo web.",
+            "p2": "Mi objetivo es mejorar como desarollador y crecer como persona.",
+            "p2_2": "Actualmente, vivo en Argentina y estoy estudiando Ingeniería en Informática. En mi tiempo libre, disfruto trabajando en proyectos personales y aprendiendo cosas nuevas."
+        },
+        "contact": {
+            "title": "Contáctame",
+            "subtitle": "You can find me on my following social medias:"
+        },
+        "chatBot": {
+            "first-message": "Hola! En qué puedo ayudarte?",
+            "example": "Quién eres?",
+            "send": "Enviar",
+            "load": "Cargando"
+        }
     },
-    "nav": {
-      "tecnologias": "Tecnologías",
-      "proyectos": "Proyectos",
-      "sobre-mi": "Sobre mí",
-      "contacto": "Contacto"
-    },
-    "projects": {
-      "title": "Mis Proyectos",
-      "scratch_io_description": "Dibuja en tiempo real con amigos.",
-      "url_shortener_description": "Lym, acortador de urls simple.",
-      "notes_description": "Crea y accede a tus notas de manera sencilla.",
-      "event_description": "Creación de eventos desde cualquier parte"
-    },
-    "about": {
-      "title": "Sobre mí",
-      "p1": "¡Hola, soy Lionel Farias👋!\nTengo 18 años y soy Técnico Informático.",
-      "p1_2": "Soy un programador apasionado por el desarrollo web.",
-      "p2": "Mi objetivo es mejorar como desarollador y crecer como persona.",
-      "p2_2": "Actualmente, vivo en Argentina y estoy estudiando Ingeniería en Informática. En mi tiempo libre, disfruto trabajando en proyectos personales y aprendiendo cosas nuevas."
-    },
-
-    "contact": {
-      "title": "Contáctame",
-      "subtitle": "You can find me on my following social medias:"
-    },
-    "chatBot": {
-      "first-message": "Hola! En qué puedo ayudarte?",
-      "example": "Quién eres?",
-      "send": "Enviar",
-      "load": "Cargando"
+    "en": {
+        "errors": {
+            "400": "Sorry, something went wrong ",
+            "404": "..."
+        },
+        "intro": {
+            "title": "Hi, I am Lionel Farias",
+            "subTitle": "Software and web developer. From Argentina, Buenos Aires."
+        },
+        "nav": {
+            "tecnologias": "Tecnologies",
+            "proyectos": "Projects",
+            "sobre-mi": "About me",
+            "contacto": "Contact"
+        },
+        "projects": {
+            "title": "My Projects",
+            "scratch_io_description": "Draw in realtime with friends.",
+            "url_shortener_description": "Lym, simple url shortener.",
+            "notes_description": "Create and access your notes in a simple way.",
+            "event_description": "Create events from anywhere"
+        },
+        "about": {
+            "title": "About me",
+            "p1": "Hello, I'm Lionel Farias👋! I'm 18 years old and I'm a Computer Technician.",
+            "p1_2": "I'm a passionate programmer focusing on web development.",
+            "p2": "My goal is to improve as a developer and grow as an individual.",
+            "p2_2": "Currently, I live in Argentina and I'm studying Computer Engineering. In my free time, I enjoy working on personal projects and learning new things."
+        },
+        "contact": {
+            "title": "Contact me",
+            "subtitle": "You can find me on my following networks:"
+        },
+        "chatBot": {
+            "first-message": "Hello! How can i help you?",
+            "example": "Who are you?",
+            "send": "Send",
+            "load": "Loading"
+        }
     }
-  },
-
-  "en": {
-    "intro": {
-      "title": "Hi, I am Lionel Farias",
-      "subTitle": "Software and web developer. From Argentina, Buenos Aires."
-    },
-    "nav": {
-      "tecnologias": "Tecnologies",
-      "proyectos": "Projects",
-      "sobre-mi": "About me",
-      "contacto": "Contact"
-    },
-    "projects": {
-      "title": "My Projects",
-      "scratch_io_description": "Draw in realtime with friends.",
-      "url_shortener_description": "Lym, simple url shortener.",
-      "notes_description": "Create and access your notes in a simple way.",
-      "event_description": "Create events from anywhere"
-    },
-    "about": {
-      "title": "About me",
-
-      "p1": "Hello, I'm Lionel Farias👋! I'm 18 years old and I'm a Computer Technician.",
-      "p1_2": "I'm a passionate programmer focusing on web development.",
-      "p2": "My goal is to improve as a developer and grow as an individual.",
-      "p2_2": "Currently, I live in Argentina and I'm studying Computer Engineering. In my free time, I enjoy working on personal projects and learning new things."
-    },
-
-    "contact": {
-      "title": "Contact me",
-      "subtitle": "You can find me on my following networks:"
-    },
-
-    "chatBot": {
-      "first-message": "Hello! How can i help you?",
-      "example": "Who are you?",
-      "send": "Send",
-      "load": "Loading"
-    }
-  }
 }
