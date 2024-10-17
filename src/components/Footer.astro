@@ -1,33 +1,38 @@
 ---
-import Header from "./Header.astro";
-import LanguageSelector from "./LanguageSelector.astro";
 import { getLangFromUrl, useTranslation, translatePath, getKeyByValue } from "@/i18n/utils";
 
 import { routes } from "@/i18n";
 
 const navItems = [
-  {
-    title: "Tecnologías",
-    label: "tecnologias",
-    href: "/#tecnologias",
-  },
-  {
-    title: "Proyectos",
-    label: "proyectos",
-    href: "/#proyectos",
-  },
+	{
+		title: "Tecnologías",
+		label: "tecnologias",
+		href: "/#tecnologias"
+	},
+	{
+		title: "Proyectos",
+		label: "proyectos",
+		href: "/#proyectos"
+	},
 
-  {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    href: "/#sobre-mi",
-  },
-  {
-    title: "Contacto",
-    label: "contacto",
-    href: "/#contacto",
-  },
+	{
+		title: "Sobre mí",
+		label: "sobre-mi",
+		href: "/#sobre-mi"
+	},
+	{
+		title: "Contacto",
+		label: "contacto",
+		href: "/#contacto"
+	}
 ];
+
+const navItemsValues = {
+	tecnologias: "tecnologias",
+	proyectos: "proyectos",
+	"sobre-mi": "sobre-mi",
+	contacto: "contacto"
+} as const;
 
 const t = useTranslation(getLangFromUrl(Astro.url));
 
@@ -35,23 +40,24 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <footer class="relative w-full h-full p-2 border-t border-white/10">
-  <nav class="border inline-block border-[rgba(255,255,255,.08)] rounded-md px-3 py-1 md:px-6 backdrop-blur-lg">
-    <ul class="space-x-2">
-      {
-        navItems.map(({ href, label }) => {
-          const navTranslation = t("nav");
-          const title = navTranslation[label];
-          return (
-            <a
-              href={translatePath(href, lang)}
-              aria-label={getKeyByValue(routes[lang], label)}
-              class={`rounded-md px-2 opacity-80 hover:opacity-100 transition`}
-            >
-              {title}
-            </a>
-          );
-        })
-      }
-    </ul>
-  </nav>
+	<nav class="border inline-block border-[rgba(255,255,255,.08)] rounded-md px-3 py-1 md:px-6 backdrop-blur-lg">
+		<ul class="space-x-2">
+			{
+				navItems.map(({ href, label }) => {
+					const navTranslation = t("nav");
+					const value = navItemsValues[label as keyof typeof navItemsValues];
+					const title = navTranslation[value];
+					return (
+						<a
+							href={translatePath(href, lang)}
+							aria-label={getKeyByValue(routes[lang], label)}
+							class={`rounded-md px-2 opacity-80 hover:opacity-100 transition`}
+						>
+							{title}
+						</a>
+					);
+				})
+			}
+		</ul>
+	</nav>
 </footer>
