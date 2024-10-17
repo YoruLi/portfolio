@@ -13,7 +13,7 @@ const lang = (Astro.currentLocale || "es") as Languages;
 const section = getKeyByValue(routes[lang], "contacto");
 ---
 
-<Section id={section} class="h-full w-full mx-auto overflow-hidden">
+<Section id={section} class="h-screen w-full mx-auto overflow-hidden">
 	<div id="globe" class="grid place-content-center w-full h-full">
 		<div
 			class="w-full mx-auto relative grid place-content-center scale-150 -z-20 border rounded-lg border-white/10"
@@ -24,21 +24,33 @@ const section = getKeyByValue(routes[lang], "contacto");
 			class="absolute flex flex-col items-center justify-center gap-3 text-center bottom-0 top-0 h-full w-full bg-gradient-to-t from-[#18181b] from-[2%] via-main-bg to-transparent"
 		>
 			<h2 class="text-7xl font-semibold">{i18n[lang].contact.title}</h2>
-			<p>{i18n[lang].contact.subtitle}</p>
+			<p class="text-gray-300">{i18n[lang].contact.subtitle}</p>
 
-			<div class="flex justify-center w-full gap-3 *:size-7 [&>svg]:fill-[#545454]">
-				<a href="https://github.com/YoruLi" target="_blank">
+			<div class="flex justify-center w-full gap-3 *:size-7 [&>a]:fill-[#545454]">
+				<a
+					href="https://github.com/YoruLi"
+					target="_blank"
+					class="[&>svg]:opacity-50 [&>svg]:hover:opacity-100"
+				>
 					<GitHub />
 				</a>
-				<a href="https://www.instagram.com/liofarias22/" target="_blank">
+				<a
+					href="https://www.instagram.com/liofarias22/"
+					target="_blank"
+					class="[&>svg]:opacity-50 [&>svg]:hover:opacity-100"
+				>
 					<Instagram />
 				</a>
-				<a href="https://www.linkedin.com/in/lionel-farias-903711281/" target="_blank">
+				<a
+					href="https://www.linkedin.com/in/lionel-farias-903711281/"
+					target="_blank"
+					class="[&>svg]:opacity-50 [&>svg]:hover:opacity-100"
+				>
 					<Linkedin />
 				</a>
 			</div>
 			<button
-				class="text-center w-auto mt-3 backdrop-blur-md transition-colors border rounded-md px-3 py-1 bg-gradient-to-b from-slate-700/50 to-black/50 hover:opacity-75"
+				class="text-center w-auto mt-3 backdrop-blur-md transition-colors border opacity-50 border-white/20 rounded-md px-3 py-1 bg-gradient-to-b from-slate-700/50 to-black/50 hover:opacity-100"
 				>{i18n[lang].contact.title}</button
 			>
 		</div>

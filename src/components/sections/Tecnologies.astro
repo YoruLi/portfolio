@@ -8,30 +8,30 @@ const lang = (Astro.currentLocale || "es") as Languages;
 const section = getKeyByValue(routes[lang], "tecnologias");
 ---
 
-<Section id={section} class="w-full h-full mx-auto mt-[155vh]">
-  <div id="container" class="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
-    <ul
-      role="list"
-      class="list-container relative mx-auto h-[450px] sm:h-[400px] w-[430px] sm:gap-5 gap-2 sm:w-[600px] overflow-hidden"
-    >
-      {
-        TECNOLOGIES.map((data) => (
-          <Card href={data.href} title={data.label}>
-            <data.icon />
-          </Card>
-        ))
-      }
-    </ul>
-  </div>
+<Section id={section} class="w-full h-full mx-auto mt-[150vh]">
+	<div id="container" class="relative w-full h-screen flex flex-col justify-center items-center">
+		<ul
+			role="list"
+			class="list-container relative mx-auto h-[450px] sm:h-[400px] w-[430px] sm:gap-5 gap-2 sm:w-[600px] overflow-hidden"
+		>
+			{
+				TECNOLOGIES.map((data) => (
+					<Card href={data.href} title={data.label}>
+						<data.icon />
+					</Card>
+				))
+			}
+		</ul>
+	</div>
 </Section>
 
 <style>
-  .list-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  }
+	.list-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	}
 
-  #container {
-    transform: translateX(0%) rotateZ(-20deg) skewX(20deg) translateZ(0);
-  }
+	#container {
+		transform: translateX(0%) rotateZ(-20deg) skewX(20deg) translateZ(0);
+	}
 </style>

@@ -23,14 +23,14 @@
         },
         "about": {
             "title": "Sobre mí",
-            "p1": "¡Hola, soy Lionel Farias👋!\nTengo 18 años y soy Técnico Informático.",
+            "p1": "¡Hola, soy Lionel Farias👋!\nTengo 18 años y soy Técnico Informático. Actualmente, vivo en Argentina y estoy estudiando Ingeniería en Informática. En mi tiempo libre, disfruto trabajando en proyectos personales y aprendiendo cosas nuevas",
             "p1_2": "Soy un programador apasionado por el desarrollo web.",
             "p2": "Mi objetivo es mejorar como desarollador y crecer como persona.",
             "p2_2": "Actualmente, vivo en Argentina y estoy estudiando Ingeniería en Informática. En mi tiempo libre, disfruto trabajando en proyectos personales y aprendiendo cosas nuevas."
         },
         "contact": {
             "title": "Contáctame",
-            "subtitle": "You can find me on my following social medias:"
+            "subtitle": "Puedes encontrarme en mis siguientes redes:"
         },
         "chatBot": {
             "first-message": "Hola! En qué puedo ayudarte?",
