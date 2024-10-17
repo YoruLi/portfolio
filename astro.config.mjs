@@ -13,5 +13,6 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  output: "server"
+  output: "server",
+  adapter: vercel(),
 });
